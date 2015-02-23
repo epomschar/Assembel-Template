@@ -1,1 +1,7 @@
-# template
+# Static pages generator
+---
+Source:
+-----
+
+
+
