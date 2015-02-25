@@ -10,7 +10,7 @@ module.exports = function (grunt) {
             project: {
                 options: {
                     layout: "templates/layouts/layout.hbs",
-                    partials: ["templates/partials/*.hbs", "templates/partials/**/*.hbs"]
+                    partials: ['templates/partials/*.hbs', 'templates/partials/**/*.hbs']
                 },
                 files: {
                     'www/': ["templates/pages/*.hbs"]
@@ -25,12 +25,12 @@ module.exports = function (grunt) {
                     style: 'expanded'
                 },
                 files: {
-                    'css/styles.css': 'sass/styles.scss'
+                    'www/css/styles.css': 'sass/styles.scss'
                 }
             }
         },
-        "jsbeautifier": {
-            files: ["www/*.html"]
+        'jsbeautifier': {
+            files: ['www/*.html']
         },
         watch: {
             assemble: {
@@ -43,13 +43,13 @@ module.exports = function (grunt) {
             },
             beautify: {
                 files: ['www/*.html'],
-                tasks: ["jsbeautifier"]
+                tasks: ['jsbeautifier']
             }
         }
     });
     grunt.loadNpmTasks('assemble');
-    grunt.loadNpmTasks("grunt-contrib-sass");
-    grunt.loadNpmTasks("grunt-jsbeautifier");
+    grunt.loadNpmTasks('grunt-contrib-sass');
+    grunt.loadNpmTasks('grunt-jsbeautifier');
     grunt.loadNpmTasks('grunt-contrib-watch');
-    grunt.registerTask('default', ['watch'])
+    grunt.registerTask('default', ['watch']);
 }

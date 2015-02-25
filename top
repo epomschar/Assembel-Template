@@ -1,0 +1,158 @@
+[33mcommit 8b311e90ab7466bebb5387fcc6377768bc83fe4b[m
+Author: Evzen Pomschar <e.pomschar@mcgroup.com>
+Date:   Tue Feb 24 18:45:44 2015 +0100
+
+    better template
+
+[1mdiff --git a/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_footer.scssc b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_footer.scssc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..02f77c5[m
+Binary files /dev/null and b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_footer.scssc differ
+[1mdiff --git a/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_header.scssc b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_header.scssc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0a3b5a6[m
+Binary files /dev/null and b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_header.scssc differ
+[1mdiff --git a/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_main.scssc b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_main.scssc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7ef2d5e[m
+Binary files /dev/null and b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/_main.scssc differ
+[1mdiff --git a/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/styles.scssc b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/styles.scssc[m
+[1mnew file mode 100644[m
+[1mindex 0000000..690900a[m
+Binary files /dev/null and b/.sass-cache/aa00d72e5dea0973c33a258047cec4d246a40723/styles.scssc differ
+[1mdiff --git a/Gruntfile.js b/Gruntfile.js[m
+[1mindex 92a959c..eab1912 100644[m
+[1m--- a/Gruntfile.js[m
+[1m+++ b/Gruntfile.js[m
+[36m@@ -1,30 +1,55 @@[m
+[31m-module.exports = function(grunt){[m
+[31m-    grunt.initConfig({[m
+[31m-        pkg: grunt.file.readJSON('package.json'),[m
+[31m-        assemble: {[m
+[31m-            options: {[m
+[31m-                assets: "./",[m
+[31m-                flatten: true,[m
+[31m-                data: "data/*.json"[m
+[31m-            },[m
+[31m-            project: {[m
+[31m-                options: {[m
+[31m-                    layout: "templates/layouts/layout.hbs",[m
+[31m-                    partials: "templates/partials/*.hbs"[m
+[31m-                },[m
+[31m-                files: {[m
+[31m-                    'www/': ["templates/pages/*.hbs"][m
+[31m-                }[m
+[31m-            }[m
+[31m-        },[m
+[31m-        "jsbeautifier" : {[m
+[31m-            files : ["www/*.html"],[m
+[31m-            options : {[m
+[31m-            }[m
+[31m-        }[m
+[31m-    });[m
+[31m-    [m
+[31m-    grunt.loadNpmTasks('assemble');[m
+[31m-    grunt.loadNpmTasks("grunt-jsbeautifier");[m
+[31m-    grunt.registerTask('default', ['assemble', 'jsbeautifier'])[m
+[32m+[m[32mmodule.exports = function (grunt) {[m[41m[m
+[32m+[m[32m    grunt.initConfig({[m[41m[m
+[32m+[m[32m        pkg: grunt.file.readJSON('package.json'),[m[41m[m
+[32m+[m[32m        assemble: {[m[41m[m
+[32m+[m[32m            options: {[m[41m[m
+[32m+[m[32m                assets: "./",[m[41m[m
+[32m+[m[32m                flatten: true,[m[41m[m
+[32m+[m[32m                data: "data/*.json"[m[41m[m
+[32m+[m[32m            },[m[41m[m
+[32m+[m[32m            project: {[m[41m[m
+[32m+[m[32m                options: {[m[41m[m
+[32m+[m[32m                    layout: "templates/layouts/layout.hbs",[m[41m[m
+[32m+[m[32m                    partials: ["templates/partials/*.hbs", "templates/partials/**/*.hbs"][m[41m[m
+[32m+[m[32m                },[m[41m[m
+[32m+[m[32m                files: {[m[41m[m
+[32m+[m[32m                    'www/': ["templates/pages/*.hbs"][m[41m[m
+[32m+[m[32m                }[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m        },[m[41m[m
+[32m+[m[32m        sass: {[m[41m[m
+[32m+[m[32m            dist: {[m[41m[m
+[32m+[m[32m                options: {[m[41m[m
+[32m+[m[32m                    lineNumbers: true,[m[41m[m
+[32m+[m[32m                    update: true,[m[41m[m
+[32m+[m[32m                    style: 'expanded'[m[41m[m
+[32m+[m[32m                },[m[41m[m
+[32m+[m[32m                files: {[m[41m[m
+[32m+[m[32m                    'css/styles.css': 'sass/styles.scss'[m[41m[m
+[32m+[m[32m                }[m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m        },[m[41m[m
+[32m+[m[32m        "jsbeautifier": {[m[41m[m
+[32m+[m[32m            files: ["www/*.html"][m[41m[m
+[32m+[m[32m        },[m[41m[m
+[32m+[m[32m        watch: {[m[41m[m
+[32m+[m[32m            assemble: {[m[41m[m
+[32m+[m[32m                files: ['templates/**/*.hbs'],[m[41m[m
+[32m+[m[32m                tasks: ['assemble'][m[41m[m
+[32m+[m[32m            },[m[41m[m
+[32m+[m[32m            css: {[m[41m[m
+[32m+[m[32m                files: ['sass/*.scss'],[m[41m[m
+[32m+[m[32m                tasks: ['sass'][m[41m[m
+[32m+[m[32m            },[m[41m[m
+[32m+[m[32m            beautify: {[m[41m[m
+[32m+[m[32m                files: ['www/*.html'],[m[41m[m
+[32m+[m[32m                tasks: ["jsbeautifier"][m[41m[m
+[32m+[m[32m            }[m[41m[m
+[32m+[m[32m        }[m[41m[m
+[32m+[m[32m    });[m[41m[m
+[32m+[m[32m    grunt.loadNpmTasks('assemble');[m[41m[m
+[32m+[m[32m    grunt.loadNpmTasks("grunt-contrib-sass");[m[41m[m
+[32m+[m[32m    grunt.loadNpmTasks("grunt-jsbeautifier");[m[41m[m
+[32m+[m[32m    grunt.loadNpmTasks('grunt-contrib-watch');[m[41m[m
+[32m+[m[32m    grunt.registerTask('default', ['watch'])[m[41m[m
+ }[m
+\ No newline at end of file[m
+[1mdiff --git a/README.md b/README.md[m
+[1mdeleted file mode 100644[m
+[1mindex f61895e..0000000[m
+[1m--- a/README.md[m
+[1m+++ /dev/null[m
+[36m@@ -1,9 +0,0 @@[m
+[31m-# Static pages generator[m
+[31m----[m
+[31m-Source: [Getting Started With Assemble](http://ampnetmedia.com/blog/getting-started-with-assemble/)[m
+[31m------[m
+[31m-[m
+[31m-The Essential Template has customizable Header, Content and Footer.[m
+[31m-[m
+[31m-[m
+[31m-[m
+[1mdiff --git a/css/styles.css b/css/styles.css[m
+[1mnew file mode 100644[m
+[1mindex 0000000..0ff2fc5[m
+[1m--- /dev/null[m
+[1m+++ b/css/styles.css[m
+[36m@@ -0,0 +1,3 @@[m
+[32m+[m[41m[m
+[32m+[m[41m[m
+[32m+[m[32m/*# sourceMappingURL=styles.css.map */[m[41m[m
+[1mdiff --git a/css/styles.css.map b/css/styles.css.map[m
+[1mnew file mode 100644[m
+[1mindex 0000000..7e02bba[m
+[1m--- /dev/null[m
+[1m+++ b/css/styles.css.map[m
+[36m@@ -0,0 +1,7 @@[m
+[32m+[m[32m{[m[41m[m
+[32m+[m[32m"version": 3,[m[41m[m
+[32m+[m[32m"mappings": "",[m[41m[m
+[32m+[m[32m"sources": [],[m[41m[m
+[32m+[m[32m"names": [],[m[41m[m
+[32m+[m[32m"file": "styles.css"[m[41m[m
+[32m+[m[32m}[m
+\ No newline at end of file[m
+[1mdiff --git a/js/jquery.js b/js/jquery.js[m
+[1mnew file mode 100644[m
+[1mindex 0000000..25714ed[m
+[1m--- /dev/null[m
+[1m+++ b/js/jquery.js[m
+[36m@@ -0,0 +1,4 @@[m
+[32m+[m[32m/*! jQuery v2.1.3 | (c) 2005, 2014 jQuery Foundation, Inc. | jquery.org/license */[m
+[32m+[m[32m!function(a,b){"object"==typeof module&&"object"==typeof module.exports?module.exports=a.document?b(a,!0):function(a){if(!a.document)throw new Error("jQuery requires a window with a document");return b(a)}:b(a)}("undefined"!=typeof window?window:this,function(a,b){var c=[],d=c.slice,e=c.concat,f=c.push,g=c.indexOf,h={},i=h.toString,j=h.hasOwnProperty,k={},l=a.document,m="2.1.3",n=function(a,b){return new n.fn.init(a,b)},o=/^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g,p=/^-ms-/,q=/-([\da-z])/gi,r=function(a,b){return b.toUpperCase()};n.fn=n.prototype={jquery:m,constructor:n,selector:"",length:0,toArray:function(){return d.call(this)},get:function(a){return null!=a?0>a?this[a+this.length]:this[a]:d.call(this)},pushStack:function(a){var b=n.merge(this.constructor(),a);return b.prevObject=this,b.context=this.context,b},each:function(a,b){return n.each(this,a,b)},map:function(a){return this.pushStack(n.map(this,function(b,c){return a.call(b,c,b)}))},
