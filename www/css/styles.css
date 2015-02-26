@@ -1,6 +1,10 @@
-/* line 1, ../../sass/_main.scss */
-p {
-  color: red;
+/* line 2, ../../sass/_pure.scss */
+.pure-g-about div {
+  background-color: gray;
+  border: 1px solid #616161;
+  width: -moz-calc(33.3333% - 2px);
+  width: -webkit-calc(33.3333% - 2px);
+  width: calc(33.3333% - 2px);
 }
 
 /*# sourceMappingURL=styles.css.map */

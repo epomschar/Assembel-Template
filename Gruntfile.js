@@ -9,11 +9,21 @@ module.exports = function (grunt) {
             },
             project: {
                 options: {
-                    layout: "templates/layouts/layout.hbs",
+                    layout: "layout.hbs",
+                    layoutdir: 'templates/layouts',
                     partials: ['templates/partials/*.hbs', 'templates/partials/**/*.hbs']
                 },
                 files: {
                     'www/': ["templates/pages/*.hbs"]
+                }
+            },
+            alt: {
+                options: {
+                    layout: "alt-layout.hbs",
+                    layoutdir: 'templates/layouts'
+                },
+                files: {
+                    'www/alt/': ["templates/pages/alt/*.hbs"]
                 }
             }
         },
@@ -30,7 +40,7 @@ module.exports = function (grunt) {
             }
         },
         'jsbeautifier': {
-            files: ['www/*.html']
+            files: ['www/**/*.html']
         },
         watch: {
             assemble: {
